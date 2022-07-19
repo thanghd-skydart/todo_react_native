@@ -5,6 +5,7 @@
 import {AppRegistry} from 'react-native';
 import React from 'react';
 import App from './src/App';
+import LoginPage from './src/pages/LoginPage';
 import {name as appName} from './app.json';
 // let products = [
 //   {
@@ -37,4 +38,4 @@ import {name as appName} from './app.json';
 //     products={products}
 //   />
 // ));
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => LoginPage);
