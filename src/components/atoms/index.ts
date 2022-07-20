@@ -1,4 +1,4 @@
-import TextView from './LabelText';
+import TextView from './TextView';
 import TextField from './TextField';
 import Divider from './Divider';
 import ButtonRadius from './ButtonRadius';

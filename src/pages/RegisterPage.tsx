@@ -22,7 +22,7 @@ import {
   SizedBox,
 } from '../components/atoms';
 import {isValidEmail, isValidatePassword} from '../utils';
-function LoginPage() {
+function RegisterPage() {
   const [keyboardIsShow, setKeyboardIsShow] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassWord, setErrorPassWord] = useState('');
@@ -204,4 +204,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-export default LoginPage;
+export default RegisterPage;

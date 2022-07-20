@@ -8,13 +8,11 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {images, icons, fontSizes, colors} from './constants';
-// import { sumNumber, subNumber, PI } from './utils/Calculation';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {CustomButton} from './components/molecules/index';
+import {images, icons, fontSizes, colors} from '../constants';
+import {CustomButton} from '../components/molecules/index';
 
 interface IAppProps {}
-function App(props: IAppProps) {
+function SplashPage(props: IAppProps) {
   const [listType, setListType] = useState([
     {name: 'Bài 1', isSelected: false},
     {name: 'Bài 2', isSelected: false},
@@ -181,4 +179,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default SplashPage;

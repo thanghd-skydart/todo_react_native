@@ -8,7 +8,8 @@ type ButtonRadiusprops = {
   height?: number | string | 48;
   width?: number | string | 48;
   backgroundColor?: ColorValue | 'white';
-  textColor?: ColorValue | 'black';
+  textColor?: ColorValue | undefined;
+  disabled?: boolean | undefined;
 };
 function ButtonRadius(props: ButtonRadiusprops) {
   const {
@@ -20,9 +21,11 @@ function ButtonRadius(props: ButtonRadiusprops) {
     borderWidth,
     height,
     width,
+    disabled,
   } = props;
   return (
     <TouchableOpacity
+      disabled={disabled}
       onPress={onPress}
       style={{
         borderWidth: borderWidth,
