@@ -4,7 +4,7 @@ import React from 'react';
 type TextProps = {
   title: string;
   fontSize?: number | 16;
-  paddingTop?: number | string | 16;
+  paddingTop?: number | string | undefined;
   paddingLeft?: number | string | 16;
   paddingRight?: number | string | 16;
   paddingBottom?: number | string | 16;

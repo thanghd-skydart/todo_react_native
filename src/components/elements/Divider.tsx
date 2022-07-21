@@ -19,4 +19,4 @@ function Divider(props: DividerProps) {
       }}></View>
   );
 }
-export default Divider;
+export {Divider};

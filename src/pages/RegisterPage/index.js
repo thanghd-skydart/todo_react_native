@@ -13,15 +13,15 @@ import {
   ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {images, fontSizes, sizeButton} from '../constants';
+import {images, fontSizes, sizeButton} from '../../constants';
 import {
   Divider,
   TextView,
   TextField,
   ButtonRadius,
   SizedBox,
-} from '../components/atoms';
-import {isValidEmail, isValidatePassword} from '../utils';
+} from '../../components/elements';
+import {isValidEmail, isValidatePassword} from '../../utils';
 function RegisterPage() {
   const [keyboardIsShow, setKeyboardIsShow] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');

@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {images, icons, fontSizes, colors} from '../constants';
-import {CustomButton} from '../components/molecules/index';
+import {images, icons, fontSizes, colors} from '../../constants';
+import {CustomButton} from '../../components/modules/index';
 
 interface IAppProps {}
 function SplashPage(props: IAppProps) {
