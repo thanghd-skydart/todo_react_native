@@ -10,15 +10,26 @@ import {
   IconSocial,
 } from '../../../components/elements';
 type CardInfoProps = {
-  //   uri: string;
-  //   name: string;
-  //   price: number;
-  //   type: string;
-  //   website: string;
-  //   socials: {}[];
+  uri: string;
+  name: string;
+  price: number;
+  type: string;
+  status: string;
+  website: string;
+  socials: {}[];
 };
+function _getColorFromStatus(status: string) {
+  if (status.toLowerCase().trim() == 'opening now') {
+    return colors.success;
+  } else if (status.toLowerCase().trim() == 'closing now') {
+    return colors.warning;
+  } else if (status.toLowerCase().trim() == 'comming soon') {
+    return colors.alert;
+  }
+}
 function CardInfo(props: CardInfoProps) {
-  //   const {uri, name, price, type, website, socials} = props;
+  const {uri, name, price, status, website, socials} = props;
+
   return (
     <View
       style={{
@@ -30,7 +41,7 @@ function CardInfo(props: CardInfoProps) {
       <View style={{flex: 1}}>
         <Image
           source={{
-            uri: 'https://www.vitquaylangson.net/wp-content/uploads/2013/06/vi%CC%A3t-quay-la%CC%A3ng-so%CC%9Bn-6.jpg',
+            uri: uri,
           }}
           style={{
             height: 100,
@@ -40,11 +51,11 @@ function CardInfo(props: CardInfoProps) {
           }}></Image>
       </View>
       <View style={{flex: 2}}>
-        <TextView title="Vịt quay Lạng Sơn"></TextView>
+        <TextView title={name}></TextView>
         <Divider height={1} backgroundColor={'black'}></Divider>
-        <RichText title={'Price: '} content={'35000'}></RichText>
-        <RichText title={'Food Type: '} content={'Món mặn'}></RichText>
-        <RichText title={'Website: '} content={'đây là website '}></RichText>
+        <RichText title={'Status: '} content={status.toUpperCase()}></RichText>
+        <RichText title={'Price: '} content={'price'}></RichText>
+        <RichText title={'Website: '} content={website}></RichText>
         <View
           style={{
             flexDirection: 'row',
