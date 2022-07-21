@@ -1,5 +1,11 @@
 import React from 'react';
-import {Text, TouchableOpacity, StyleSheet, ColorValue} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ColorValue,
+  FlexAlignType,
+} from 'react-native';
 type ButtonRadiusprops = {
   onPress: () => void;
   text: string;
@@ -10,6 +16,7 @@ type ButtonRadiusprops = {
   backgroundColor?: ColorValue | 'white';
   textColor?: ColorValue | undefined;
   disabled?: boolean | undefined;
+  alignSelf?: 'auto' | FlexAlignType | undefined;
 };
 function ButtonRadius(props: ButtonRadiusprops) {
   const {
@@ -22,6 +29,7 @@ function ButtonRadius(props: ButtonRadiusprops) {
     height,
     width,
     disabled,
+    alignSelf,
   } = props;
   return (
     <TouchableOpacity
@@ -34,6 +42,7 @@ function ButtonRadius(props: ButtonRadiusprops) {
         borderRadius: borderRadius,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: alignSelf,
         backgroundColor: backgroundColor,
       }}>
       <Text style={{color: textColor, fontSize: 16}}>{text}</Text>

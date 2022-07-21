@@ -26,11 +26,18 @@ function RegisterPage() {
   const [keyboardIsShow, setKeyboardIsShow] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassWord, setErrorPassWord] = useState('');
+  const [errorConfirmPassWord, setErrorConfirmPassWord] = useState('');
 
   const [email, setEmail] = useState('');
   const [passWord, setPassWord] = useState('');
+  const [confirmPassWord, setConfirmPassWord] = useState('');
   const isSubmit = () =>
-    email.length > 0 && passWord.length > 0 && errorEmail.length > 0;
+    email.length > 0 &&
+    passWord.length > 0 &&
+    confirmPassWord.length > 0 &&
+    errorEmail.length == 0 &&
+    errorPassWord.length == 0 &&
+    errorConfirmPassWord.length == 0;
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardIsShow(true);
@@ -64,7 +71,7 @@ function RegisterPage() {
                 source={images.image_login}
                 style={styles.imageLogo}></Image>
             </View>
-            <View style={styles.topContent}>
+            <View style={styles.content}>
               <View style={{marginHorizontal: 15}}>
                 <TextView title="Email: " color={'black'}></TextView>
                 <TextField
@@ -103,15 +110,36 @@ function RegisterPage() {
                     setPassWord(text);
                   }}></TextField>
                 <Divider height={1} backgroundColor={'black'}></Divider>
-                {errorPassWord.length != 0 && passWord.length != 0 && (
+                {errorPassWord.length != 0 && passWord.length != 0 ? (
                   <TextView
                     title={errorPassWord}
                     color="red"
                     paddingTop={8}></TextView>
+                ) : (
+                  <SizedBox height={8}></SizedBox>
                 )}
               </View>
-            </View>
-            <View style={styles.bottomContent}>
+              <View style={{marginHorizontal: 15}}>
+                <TextView title="Confirm password: " color="black"></TextView>
+                <TextField
+                  placeholder="*******"
+                  secureTextEntry={true}
+                  onChangeText={text => {
+                    setErrorConfirmPassWord(
+                      text == passWord ? '' : 'Mật khẩu nhập không đúng',
+                    );
+                    setConfirmPassWord(text);
+                  }}></TextField>
+                <Divider height={1} backgroundColor={'black'}></Divider>
+                {errorConfirmPassWord.length != 0 &&
+                  confirmPassWord.length != 0 && (
+                    <TextView
+                      title={errorConfirmPassWord}
+                      color="red"
+                      paddingTop={8}></TextView>
+                  )}
+              </View>
+              <SizedBox height={50}></SizedBox>
               <ButtonRadius
                 disabled={isSubmit() == false}
                 onPress={() => {
@@ -122,12 +150,12 @@ function RegisterPage() {
                 width={sizeButton.w50per}
                 borderRadius={20}
                 text="Login"
+                alignSelf="center"
                 textColor={
                   isSubmit() == true ? 'white' : 'black'
                 }></ButtonRadius>
-              <SizedBox height={12}></SizedBox>
-              <TextView title="New user? Register now" color={'red'}></TextView>
             </View>
+
             {keyboardIsShow == false && (
               <View style={styles.bottom}>
                 <View style={styles.styleChildBottom}>
@@ -175,7 +203,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   header: {
-    flex: 30,
+    flex: 20,
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -187,16 +215,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     resizeMode: 'center',
   },
-  topContent: {
-    flex: 25,
-  },
-  bottomContent: {
-    flex: 25,
+  content: {
+    flex: 50,
     justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'white',
+    marginHorizontal: '3%',
+    borderRadius: 25,
   },
+
   bottom: {
-    flex: 25,
+    flex: 15,
+    paddingTop: '5%',
   },
   styleChildBottom: {
     flexDirection: 'row',

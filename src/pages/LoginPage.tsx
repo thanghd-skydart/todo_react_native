@@ -10,7 +10,6 @@ import {
   Alert,
   Keyboard,
   Platform,
-  ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {images, fontSizes, sizeButton} from '../constants';
@@ -30,7 +29,10 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [passWord, setPassWord] = useState('');
   const isSubmit = () =>
-    email.length > 0 && passWord.length > 0 && errorEmail.length > 0;
+    email.length > 0 &&
+    passWord.length > 0 &&
+    errorEmail.length == 0 &&
+    errorPassWord.length == 0;
   useEffect(() => {
     Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardIsShow(true);
