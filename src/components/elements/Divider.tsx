@@ -3,12 +3,17 @@ import React from 'react';
 
 type DividerProps = {
   height?: number | 1;
-  backgroundColor?: ColorValue | 'black';
-  width?: number | string | '100%';
-  marginHorizontal?: number | string | '100%';
+  backgroundColor?: ColorValue;
+  width?: number | string;
+  marginHorizontal?: number | string;
 };
 function Divider(props: DividerProps) {
-  const {height, backgroundColor, width, marginHorizontal} = props;
+  const {
+    height,
+    backgroundColor = 'black',
+    width = '100%',
+    marginHorizontal = '100%',
+  } = props;
   return (
     <View
       style={{

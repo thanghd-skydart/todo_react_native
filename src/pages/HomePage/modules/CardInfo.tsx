@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Image} from 'react-native';
-
-import {images, fontSizes, sizeButton, colors} from '../../../constants';
+import React from 'react';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from 'react-native';
+import {colors} from '../../../constants';
 import {
   Divider,
   TextView,
-  SizedBox,
   RichText,
   IconSocial,
 } from '../../../components/elements';
@@ -16,60 +19,83 @@ type CardInfoProps = {
   type: string;
   status: string;
   website: string;
-  socials: {}[];
+  socials: {
+    facebook?: string | undefined;
+    twitter?: string | undefined;
+    instagram?: string | undefined;
+  };
+  onPress?: ((event: GestureResponderEvent) => void) | undefined;
 };
 function _getColorFromStatus(status: string) {
-  if (status.toLowerCase().trim() == 'opening now') {
-    return colors.success;
-  } else if (status.toLowerCase().trim() == 'closing now') {
-    return colors.warning;
-  } else if (status.toLowerCase().trim() == 'comming soon') {
-    return colors.alert;
-  }
+  let color;
+  status.toLowerCase().trim() == 'opening now'
+    ? (color = colors.success)
+    : status.toLowerCase().trim() == 'closing now'
+    ? (color = colors.warning)
+    : (color = colors.alert);
+  return color;
 }
 function CardInfo(props: CardInfoProps) {
-  const {uri, name, price, status, website, socials} = props;
+  const {uri, name, price, status, website, socials, onPress} = props;
 
   return (
-    <View
-      style={{
-        height: 100,
-        flexDirection: 'row',
-        marginHorizontal: 12,
-        justifyContent: 'space-between',
-      }}>
-      <View style={{flex: 1}}>
-        <Image
-          source={{
-            uri: uri,
-          }}
-          style={{
-            height: 100,
-            width: 100,
-            resizeMode: 'cover',
-            borderRadius: 10,
-          }}></Image>
-      </View>
-      <View style={{flex: 2}}>
-        <TextView title={name}></TextView>
-        <Divider height={1} backgroundColor={'black'}></Divider>
-        <RichText title={'Status: '} content={status.toUpperCase()}></RichText>
-        <RichText title={'Price: '} content={'price'}></RichText>
-        <RichText title={'Website: '} content={website}></RichText>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
-          }}>
-          <IconSocial name="facebook" size={20} color="blue"></IconSocial>
-          <SizedBox width={8}></SizedBox>
-          <IconSocial name="instagram" size={20} color="green"></IconSocial>
-          <SizedBox width={8}></SizedBox>
-          <IconSocial name="twitter" size={20} color="grey"></IconSocial>
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={{
+          height: 100,
+          flexDirection: 'row',
+          marginHorizontal: 12,
+          justifyContent: 'space-between',
+        }}>
+        <View style={{flex: 1}}>
+          <Image
+            source={{
+              uri: uri,
+            }}
+            style={{
+              height: 100,
+              width: 100,
+              resizeMode: 'cover',
+              borderRadius: 10,
+            }}></Image>
+        </View>
+        <View style={{flex: 2}}>
+          <TextView title={name}></TextView>
+          <Divider height={1} backgroundColor={'black'}></Divider>
+          <RichText
+            title={'Status: '}
+            content={status.toUpperCase()}
+            colorRich={_getColorFromStatus(status)}></RichText>
+          <RichText title={'Price: '} content={'price'}></RichText>
+          <RichText title={'Website: '} content={website}></RichText>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'flex-start',
+              alignItems: 'flex-start',
+            }}>
+            {socials['facebook'] != undefined && (
+              <View style={{paddingRight: 8}}>
+                <IconSocial name="facebook" size={20} color="blue"></IconSocial>
+              </View>
+            )}
+            {socials['instagram'] != undefined && (
+              <View style={{paddingRight: 8}}>
+                <IconSocial
+                  name="instagram"
+                  size={20}
+                  color="green"></IconSocial>
+              </View>
+            )}
+            {socials['twitter'] != undefined && (
+              <View style={{paddingRight: 8}}>
+                <IconSocial name="twitter" size={20} color="grey"></IconSocial>
+              </View>
+            )}
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 export default CardInfo;
