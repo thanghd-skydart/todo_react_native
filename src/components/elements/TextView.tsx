@@ -3,20 +3,33 @@ import React from 'react';
 
 type TextProps = {
   title: string;
-  fontSize?: number | 16;
+  fontSize?: number;
   paddingTop?: number | string | undefined;
-  paddingLeft?: number | string | 16;
-  paddingRight?: number | string | 16;
-  paddingBottom?: number | string | 16;
-  paddingVertical?: number | string | 16;
-  paddingHorizontal?: number | string | 16;
-
+  paddingLeft?: number | string;
+  paddingRight?: number | string;
+  paddingBottom?: number | string;
+  paddingVertical?: number | string;
+  paddingHorizontal?: number | string;
+  fontWeight?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
+    | undefined;
   color?: ColorValue | 'black';
 };
 function TextView(props: TextProps) {
   const {
     title,
-    fontSize,
+    fontSize = 16,
+    fontWeight,
     color,
     paddingTop,
     paddingLeft,
@@ -29,6 +42,7 @@ function TextView(props: TextProps) {
     <Text
       style={{
         fontSize: fontSize,
+        fontWeight: fontWeight,
         color: color,
         paddingTop: paddingTop,
         paddingLeft: paddingLeft,
