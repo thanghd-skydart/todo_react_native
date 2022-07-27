@@ -10,7 +10,8 @@ import {
   SplashPage,
   HomePage,
   ProductGridView,
+  Setting,
 } from './src/pages';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => ProductGridView);
+AppRegistry.registerComponent(appName, () => Setting);
