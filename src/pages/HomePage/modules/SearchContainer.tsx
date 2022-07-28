@@ -12,7 +12,7 @@ export function SearchContainer(props: SearchProps) {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        height: '80%',
+        height: '95%',
         width: '92%',
       }}>
       <Icon
@@ -29,6 +29,7 @@ export function SearchContainer(props: SearchProps) {
         style={{
           backgroundColor: 'grey',
           width: '100%',
+          height: '100%',
           borderRadius: 10,
           opacity: 0.5,
           marginEnd: 8,

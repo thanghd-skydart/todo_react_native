@@ -25,7 +25,7 @@ function TextField(props: TextFieldProps) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <TextInput
         onChangeText={onChangeText}
-        style={{color: color}}
+        style={{color: color, height: 50}}
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}></TextInput>

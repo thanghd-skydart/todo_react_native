@@ -70,7 +70,7 @@ function Settings() {
           valueSwitch={isUseFingerprint}
           thumbColor={isUseFingerprint ? colors.primary : colors.inactive}
           onValueChange={() => {
-            setEnabledLockApp(!isUseFingerprint);
+            setUseFingerprint(!isUseFingerprint);
           }}
         />
         <ElementSetting
@@ -81,7 +81,7 @@ function Settings() {
             isEnabledChangePassword ? colors.primary : colors.inactive
           }
           onValueChange={() => {
-            setEnabledLockApp(!isEnabledChangePassword);
+            setEnabledChangePassword(!isEnabledChangePassword);
           }}
         />
         <HeaderSetting title="Misc" />

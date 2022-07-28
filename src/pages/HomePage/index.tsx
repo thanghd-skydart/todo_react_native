@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View} from 'react-native';
+import {View, SafeAreaView} from 'react-native';
 
 import {Divider, SizedBox} from '../../components/elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -19,7 +19,7 @@ function HomePage() {
     );
   }
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 100,
         backgroundColor: 'white',
@@ -30,6 +30,7 @@ function HomePage() {
           paddingHorizontal: 12,
           flexDirection: 'row',
           justifyContent: 'space-between',
+          height: '5%',
         }}>
         <SearchContainer
           onChangeText={text => {
@@ -52,7 +53,7 @@ function HomePage() {
       ) : (
         <NoData />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 export default HomePage;

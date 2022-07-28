@@ -7,12 +7,15 @@ import {
   ImageBackground,
   TouchableOpacity,
   Alert,
+  Platform,
 } from 'react-native';
 import {images, icons, fontSizes, colors} from '../../constants';
 import {CustomButton} from '../../components/modules/index';
 
 interface IAppProps {}
 function SplashPage(props: IAppProps) {
+  const {navigation, route} = props;
+  const {navigate, goBack} = navigation;
   const [listType, setListType] = useState([
     {name: 'Bài 1', isSelected: false},
     {name: 'Bài 2', isSelected: false},
@@ -49,11 +52,6 @@ function SplashPage(props: IAppProps) {
               isSelected={type.isSelected}
               onPress={() => {
                 let newListType = listType.map(aType => {
-                  //   if (aType.name == type.name && aType.isSelected == false) {
-                  //     return {...aType, isSelected: true};
-                  //   } else {
-                  //     return {...aType, isSelected: false};
-                  //   }
                   return {
                     ...aType,
                     isSelected:
@@ -66,7 +64,12 @@ function SplashPage(props: IAppProps) {
           ))}
         </View>
         <View style={styles.viewBottom}>
-          <CustomButton title={'Login'} onPress={() => {}} />
+          <CustomButton
+            title={'Login'}
+            onPress={() => {
+              navigate('login');
+            }}
+          />
           <Text
             style={{
               color: 'white',
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
     flex: 15,
     justifyContent: 'space-between',
     backgroundColor: 'transparent',
+    marginTop: Platform.OS === 'ios' ? 40 : 0,
   },
   viewBody: {
     flex: 15,

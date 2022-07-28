@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View, SafeAreaView} from 'react-native';
 
 import {productData} from '../../assets/datas';
 
@@ -7,7 +7,7 @@ import GridItems from './elements/GridItems';
 function ProductGridView() {
   const [products, setProducts] = useState(productData);
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <FlatList
         data={products}
         numColumns={2}
@@ -29,7 +29,7 @@ function ProductGridView() {
             item={item}
             index={index}></GridItems>
         )}></FlatList>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({

@@ -4,4 +4,5 @@ import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
 import ProductGridView from './ProductGridView';
 import Setting from './Setting';
-export { LoginPage, SplashPage, RegisterPage,HomePage ,ProductGridView,Setting};
+import User from './User';
+export { LoginPage, SplashPage, RegisterPage,HomePage ,ProductGridView,Setting, User};

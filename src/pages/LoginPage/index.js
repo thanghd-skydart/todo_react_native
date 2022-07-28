@@ -10,6 +10,7 @@ import {
   Alert,
   Keyboard,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {images, fontSizes, sizeButton} from '../../constants';
@@ -21,7 +22,10 @@ import {
   SizedBox,
 } from '../../components/elements';
 import {isValidEmail, isValidatePassword} from '../../utils';
-function LoginPage() {
+type LoginProps = {};
+function LoginPage(props: LoginProps) {
+  const {navigation, route} = props;
+  const {navigate, goBack} = navigation;
   const [keyboardIsShow, setKeyboardIsShow] = useState(false);
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassWord, setErrorPassWord] = useState('');
@@ -117,7 +121,7 @@ function LoginPage() {
               <ButtonRadius
                 disabled={isSubmit() == false}
                 onPress={() => {
-                  Alert.alert('email:' + email + '/npass:' + passWord);
+                  navigate('home');
                 }}
                 backgroundColor={isSubmit() == true ? 'green' : 'grey'}
                 height={sizeButton.h48}
@@ -128,7 +132,14 @@ function LoginPage() {
                   isSubmit() == true ? 'white' : 'black'
                 }></ButtonRadius>
               <SizedBox height={12}></SizedBox>
-              <TextView title="New user? Register now" color={'red'}></TextView>
+              <TouchableOpacity
+                onPress={() => {
+                  navigate('register');
+                }}>
+                <TextView
+                  title="New user? Register now"
+                  color={'red'}></TextView>
+              </TouchableOpacity>
             </View>
             {keyboardIsShow == false && (
               <View style={styles.bottom}>
